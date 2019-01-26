@@ -16,14 +16,21 @@
   
   Formula for cuboid volume: length * width * height
 */
-
+  CuboidMaker.prototype.volume = function () {
+    return this.length + this.height * this.width;
+  };
 
 /* == Step 3: Surface Area Method ==
   Create another method using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
 
   Formula for cuboid surface area of a cube: 2 * (length * width + length * height + width * height)
 */
+  CuboidMaker.prototype.surfaceArea = function {
+    let double = (val) => 2 * val;
 
+    return double(this.length*this.width + this.length*this.width + this.width*this.height);
+  };
+  
 
 /* == Step 4: Create a new object that uses CuboidMaker ==
   Create a cuboid object that uses the new keyword to use our CuboidMaker constructor

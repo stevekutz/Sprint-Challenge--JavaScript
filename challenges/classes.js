@@ -24,11 +24,11 @@ class CuboidMaker {
     this.dimensions = dim.dimensions;  // more flexible way to describe dimension, in case of future refactor
   }
 
- validDim (){
-    for(var key in this.dimensions){
-      if(this.dimensions[key] <= 0) return false;
+ validDim () {
+   for (var key in this.dimensions){
+     return (this.dimensions[key] <= 0) ? false : true;    // ternary looks cleaner
     }
-    return true
+
   }
 
 
@@ -74,15 +74,26 @@ let cuboidEmpty2 = new CuboidMaker({
   }
 });
 
+let cuboidEmpty3 = new CuboidMaker({
+  dimensions: {
+    length: 0,
+    width: 0,
+    height: 5
+  }
+});
+
 // Test your volume and surfaceArea methods by uncommenting the logs below:
 console.log(cuboid.volume()); // 100
 console.log(cuboid.surfaceArea()); // 130
 
-console.log(cuboidEmpty.volume()); //
-console.log(cuboidEmpty.surfaceArea()); // 130
+console.log(cuboidEmpty.volume()); //  0
+console.log(cuboidEmpty.surfaceArea()); // 0
 
-console.log(cuboidEmpty2.volume()); //
-console.log(cuboidEmpty2.surfaceArea());
+console.log(cuboidEmpty2.volume()); //  0
+console.log(cuboidEmpty2.surfaceArea());  // 0
+
+console.log(cuboidEmpty3.volume()); //   0
+console.log(cuboidEmpty3.surfaceArea());  // 0
 
 
 // Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.
@@ -98,8 +109,10 @@ class CubeMaker extends CuboidMaker{
   }
 
   validSide(){
-    if(this.side > 0) return true;
-    return false;
+  //  if(this.side > 0) return true;
+  //  return false;
+
+    return ((this.side > 0) ? true : false);   // ternary looks cleaner
 
   }
 

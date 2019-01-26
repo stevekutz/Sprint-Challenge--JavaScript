@@ -5,7 +5,11 @@
 /* == Step 1: Base Constructor ==
   Create a constructor function named CuboidMaker that accepts properties for length, width, and height
 */
-
+  function CuboidMaker (dim) {   // using dim obj for dimension attributes
+    this.length = dim.length;
+    this.height = dim.height;
+    this.width = dim.width;
+  }
 
 /* == Step 2: Volume Method ==
   Create a method using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height

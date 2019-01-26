@@ -24,10 +24,19 @@ class CuboidMaker {
     this.dimensions = dim.dimensions;  // more flexible way to describe dimension, in case of future refactor
   }
 
+ validDim (){
+    for(var key in this.dimensions){
+      if(this.dimensions[key] <= 0) return false;
+    }
+    return true
+  }
+
+
+
   volume() {
     let vol = 0;
     // test if dimensions is not an empty  { } or invalid
-    if(Object.keys(this.dimensions).length !== 0) {
+    if(Object.keys(this.dimensions).length >=3  && this.validDim() ){
       vol = 1;                  // iterate over dimensions to provide volume
       for(var key in this.dimensions)   vol *= this.dimensions[key];
     }
@@ -39,7 +48,7 @@ class CuboidMaker {
     let dim = this.dimensions;
     let double = (val) => 2 * val;
 
-    if(Object.keys(this.dimensions).length !== 0) {
+    if(Object.keys(this.dimensions).length >=3  && this.validDim() ){
       return double(dim.length*dim.width + dim.length*dim.width + dim.width*dim.height);
     }
 
@@ -72,6 +81,9 @@ console.log(cuboid.surfaceArea()); // 130
 console.log(cuboidEmpty.volume()); //
 console.log(cuboidEmpty.surfaceArea()); // 130
 
+console.log(cuboidEmpty2.volume()); //
+console.log(cuboidEmpty2.surfaceArea());
+
 
 // Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.
 // Find out the formulas for volume and surface area for cubes and create those methods
@@ -85,15 +97,27 @@ class CubeMaker extends CuboidMaker{
 
   }
 
+  validSide(){
+    if(this.side > 0) return true;
+    return false;
+
+  }
+
   cubeVolume () {
-    return Math.pow(this.side, 3);  // side ^ 3
+    if(this.validSide()) return Math.pow(this.side, 3);  // side ^ 3
+    return 'side length must be positive';
   }
 
   cubeSurfaceArea () {
-    return  6 * Math.pow(this.side, 2);  // 6 sides * square of each side (side ^2)
+    if(this.validSide()) return  6 * Math.pow(this.side, 2);  // 6 sides * square of each side (side ^2)
+    return 'side length must be positive';
   }
 }
 
 let cube_1 = new CubeMaker({side: 3});
 console.log(cube_1.cubeSurfaceArea());
 console.log(cube_1.cubeVolume());
+
+let badCube = new CubeMaker({side: -4});
+console.log(badCube.cubeSurfaceArea());
+console.log(badCube.cubeVolume());

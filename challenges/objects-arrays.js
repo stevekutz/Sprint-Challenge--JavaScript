@@ -42,7 +42,7 @@ let stegosaurus = new DinoMaker({
 });
 
 // velociraptor, carnivorous, 15kg, 1.8m, Late Cretaceious
-let velociraptor = new DinoMaker({
+let stegosaurus = new DinoMaker({
   info: {
     name: 'Velociraptor',
     diet: 'carnivorous',
@@ -69,7 +69,9 @@ console.log(tyrannosaurus.info.period);
 
 
 // Create a new roar method for the tyrannosaurus.  When called, return "RAWERSRARARWERSARARARRRR!" Log the result.
-console.log(tyrannosaurus.roar());
+console.log(tyrannosaurus.roar()); //   RAWERSRARARWERSARARARRRR!
+console.log(stegosaurus.roar()); //   'rawersrararwersarararrrr!
+console.log(stegosaurus.roar()); //   SSSSSSsssssssssssss, MMMMmmmmm , that looks yummy!!!!
 
 // ==== Arrays ====
 

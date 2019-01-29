@@ -108,11 +108,11 @@ class CubeMaker extends CuboidMaker{
   }
 
   validSide(){
-  //  if(this.side > 0) return true;      // ugly schlop
+  //  if(this.side > 0) return true;      // ugly if schlop
   //  return false;
 
  //   return ((this.side > 0) ? true : false);   // ternary looks cleaner
-    return this.side > 0;                // better
+    return this.side > 0;                // better !
   }
 
   cubeVolume () {
